@@ -6,29 +6,8 @@
     <title>Cadastro de Usuário</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Estilos Personalizados -->
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .card {
-            margin-top: 50px;
-        }
-
-        .card-header {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-        }
-
-        .alert {
-            margin-top: 20px;
-        }
-    </style>
+    <!-- CSS Personalizado -->
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 
 <body>

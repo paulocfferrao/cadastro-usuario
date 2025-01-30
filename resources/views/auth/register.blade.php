@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <!-- Exibir mensagem de sucesso -->
                 @if(session('success'))
                 <div class="alert alert-success">
@@ -31,7 +31,8 @@
                 </div>
                 @endif
 
-                <div class="card">
+                <!-- Formulário de Cadastro -->
+                <div class="card mb-4">
                     <div class="card-header text-center">
                         <h4>Registro de Usuário</h4>
                     </div>
@@ -72,13 +73,48 @@
                         </form>
                     </div>
                 </div>
+
+                <!-- Lista de Usuários -->
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4>Usuários Cadastrados</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        <!-- Formulário para excluir usuário -->
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Scripts opcionais -->
 </body>
 
 </html>
